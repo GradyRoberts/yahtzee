@@ -1,0 +1,25 @@
+{
+  "name": "yahtzee-bot",
+  "version": "1.0.0",
+  "description": "Discord bot for playing Yahtzee",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GradyRoberts/yahtzee.git"
+  },
+  "author": "Grady Roberts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GradyRoberts/yahtzee/issues"
+  },
+  "homepage": "https://github.com/GradyRoberts/yahtzee#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0"
+  }
+}
