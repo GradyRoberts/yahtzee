@@ -32,6 +32,16 @@ for (const modelDefiner of modelDefiners) {
 	modelDefiner(sequelize);
 }
 
+// Define relationships
+const { game, board } = sequelize.models;
+game.hasMany(board, {
+	foreignKey: {
+		name: 'gameID',
+		allowNull: false,
+	},
+});
+board.belongsTo(game);
+
 sequelize.sync();
 
 // --- Bot is ready to receive commands ---
