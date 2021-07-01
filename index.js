@@ -36,7 +36,6 @@ for (const modelDefiner of modelDefiners) {
 const { game, board } = sequelize.models;
 game.hasMany(board, {
 	foreignKey: {
-		name: 'gameID',
 		allowNull: false,
 	},
 });

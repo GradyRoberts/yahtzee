@@ -2,11 +2,6 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
 	sequelize.define('board', {
-		// gameID: {
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: false,
-		// 	primaryKey: true,
-		// },
 		playerID: {
 			type: DataTypes.STRING,
 			allowNull: false,
