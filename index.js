@@ -1,10 +1,10 @@
-const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const Discord = require('discord.js');
 const { prefix, token } = require('./config.json');
 
+
 // --- Create Discord bot client ---
-const client = new Discord.Client({ ws: { intents: ['GUILD_MESSAGES', 'DIRECT_MESSAGES'] } });
+const client = new Discord.Client({ ws: { intents: ['GUILDS', 'GUILD_MESSAGES', 'DIRECT_MESSAGES'] } });
 client.commands = new Discord.Collection();
 
 // --- Load bot commands ---
@@ -13,35 +13,6 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
 }
-
-// --- Create DB conn instance and initialize models ---
-const sequelize = new Sequelize('database', 'user', 'password', {
-	host: 'localhost',
-	dialect: 'sqlite',
-	logging: false,
-	// SQLite only
-	storage: 'database.sqlite',
-});
-
-const modelDefiners = [
-	require('./models/game.model'),
-	require('./models/board.model'),
-];
-
-for (const modelDefiner of modelDefiners) {
-	modelDefiner(sequelize);
-}
-
-// Define relationships
-const { game, board } = sequelize.models;
-game.hasMany(board, {
-	foreignKey: {
-		allowNull: false,
-	},
-});
-board.belongsTo(game);
-
-sequelize.sync();
 
 // --- Bot is ready to receive commands ---
 client.once('ready', () => {
@@ -74,5 +45,3 @@ client.on('message', msg => {
 });
 
 client.login(token);
-
-module.exports = sequelize;
