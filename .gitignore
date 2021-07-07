@@ -110,6 +110,7 @@ dist
 .tern-port
 
 # Stores VSCode versions used for testing VSCode extensions
+.vscode
 .vscode-test
 
 # yarn v2
@@ -123,6 +124,7 @@ dist
 
 # Configuration file
 config.json
+
 
 # Database file
 database.sqlite
