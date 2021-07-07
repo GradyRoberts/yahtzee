@@ -126,3 +126,6 @@ config.json
 
 # Database file
 database.sqlite
+
+# Temporary images
+tmp*.png
